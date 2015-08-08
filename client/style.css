@@ -1,0 +1,28 @@
+body {
+    background: #ecf0f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+time {
+    color: #3498db;
+    font-size: 15em;
+    font-family: 'Helvetica Neue', sans-serif;
+
+    flex: 1;
+    display: block;
+    text-align: center;
+}
+
+.minutes:after {
+    content: "m";
+    font-size: 0.5em;
+}
+
+.seconds:after {
+    content: "s";
+    font-size: 0.5em;
+}

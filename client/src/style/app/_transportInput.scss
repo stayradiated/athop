@@ -1,0 +1,19 @@
+.transport--input {
+
+    button {
+        $bg: #3498db;
+
+        float: right;
+        border: 0;
+        outline: 0;
+        color: #fff;
+        background: $bg;
+        padding: 10px;
+        border-radius: 3px;
+
+        &:hover {
+            background: lighten($bg, 5);
+        }
+    }
+
+}

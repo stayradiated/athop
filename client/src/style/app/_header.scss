@@ -1,0 +1,22 @@
+.component--header {
+    background: #eee;
+    border-bottom: 10px;
+    padding: 20px;
+
+    h1 {
+        float: left;
+        font-size: 20px;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .component--transport-input {
+        float: right;
+    }
+
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
