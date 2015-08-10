@@ -29,14 +29,15 @@ var timer = null;
 Router.run(routes, Router.HashLocation, (Root, state) => {
     React.render(<Root />, document.querySelector('#react'));
 
+    if (timer != null) {
+        clearInterval(timer);
+    }
+
     if (state.params.hasOwnProperty('stopID')) {
         var stopID = state.params.stopID;
+        App.actions.setStopID(stopID);
 
-        if (timer != null) {
-            clearInterval(timer);
-        }
-
-        setInterval(()=> {
+        timer = setInterval(()=> {
             App.actions.loadStop(stopID);
         }, 30 * 1000);
 

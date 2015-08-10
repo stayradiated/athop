@@ -1,0 +1,100 @@
+.component--movement {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    $padding: 20px;
+
+    &:not(.monitored) .expected-time {
+        // opacity: 0.3;
+    }
+
+    .ampm {
+        text-transform: uppercase;
+        font-size: 0.6em;
+        margin-left: 5px;
+    }
+
+    header {
+        display: flex;
+        background: $clouds;
+        padding: 0 $padding;
+
+        h1 {
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        h1, p {
+            margin-top: 0;
+            margin-bottom: 0;
+            line-height: 40px;
+        }
+
+        h1, .departed {
+            font-size: 1.5em;
+            color: $midnight-blue;
+        }
+
+        .departed {
+            font-size: 1.5em;
+        }
+
+        .destination {
+            flex: 1;
+            text-align: right;
+            color: $peter-river;
+            font-weight: bold;
+
+            .icon {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .details {
+        display: flex;
+        padding: $padding/2 $padding;
+    }
+
+    .direction {
+        .icon {
+            font-size: 2em;
+            color: $emerald;
+            margin-right: 10px;
+        }
+    }
+
+    .route-info {
+        .route {
+            font-size: 4em;
+        }
+
+        p {
+            font-weight: bold;
+            color: $peter-river;
+        }
+
+        .stop {
+        }
+    }
+
+    .expected-time {
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            text-transform: uppercase;
+            font-size: 0.5em;
+            font-weight: 700;
+            color: $concrete;
+        }
+    }
+
+    .component--counter {
+        flex: 1;
+        text-align: right;
+        color: $peter-river;
+        font-size: 2.4em;
+    }
+}

@@ -4,6 +4,10 @@ import flux from '../../flux';
 import actionTypes from './action-types'
 import getters from './getters';
 
+const setStopID = function (stopID) {
+    flux.dispatch(actionTypes.setStopID, stopID);
+}
+
 const loadStop = function (stopID) {
     reqwest({
         url: '/stop/' + stopID.toString(),
@@ -12,4 +16,4 @@ const loadStop = function (stopID) {
     });
 };
 
-export default { loadStop };
+export default { loadStop, setStopID };

@@ -4,6 +4,9 @@ import React from 'react';
 import moment from 'moment';
 import classnames from 'classnames';
 
+import Icon from './icon';
+import Counter from './counter';
+
 const Movement = React.createClass({
     displayName: 'Movement',
 
@@ -15,25 +18,43 @@ const Movement = React.createClass({
         var m = this.props.movement;
 
         var classes = classnames({
-            'component--timer': true,
+            'component--movement': true,
             'monitored': m.get('Monitored'),
             'in-congestion': m.get('InCongestion'),
         });
 
+        var aDT = moment(m.get('ActualDepartureTime'));
+        var eAT = moment(m.get('ExpectedArrivalTime'));
+        var eDT = moment(m.get('ExpectedDepartureTime'));
+
         return (
             <div className={classes}>
-                <h1>{m.get('Route')}</h1>
+                <header>
+                    <h1 className='route'>{m.get('Route')}</h1>
+                    <p className='departed'>
+                        {aDT.format('hh:mm')}
+                        <span className='ampm' >{aDT.format('a')}</span>
+                    </p>
+                    <p className='destination'>
+                        <Icon id='arrow-right' />
+                        {m.get('DestinationDisplay')}
+                    </p>
+                </header>
 
-                <h2>{m.get('Stop')} -> {m.get('DestinationDisplay')}</h2>
+                <div className='details'>
+                    <div className='direction'>
+                        <Icon id='sign-in' />
+                    </div>
 
-                <div className='actual-time'>
-                    <p className='arrival'>{moment(m.get('ActualDepartureTime')).format('hh:mm:ss a')}</p>
-                    <p className='departed'>{moment(m.get('ActualArrivalTime')).format('hh:mm:ss a')}</p>
-                </div>
+                    <div className='expected-time'>
+                        <span className='title'>Expected Arrival</span>
+                        <span className='time'>
+                            {eAT.format('hh:mm:ss')}
+                            <span className='ampm'>{eAT.format('a')}</span>
+                        </span>
+                    </div>
 
-                <div className='expected-time'>
-                    <p className='arrival'>{moment(m.get('ExpectedArrivalTime')).format('hh:mm:ss a')}</p>
-                    <p className='departed'>{moment(m.get('ExpectedDepartureTime')).format('hh:mm:ss a')}</p>
+                    <Counter movement={m} />
                 </div>
             </div>
         );

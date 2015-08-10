@@ -1,0 +1,20 @@
+.component--counter {
+    .minutes:after,
+    .seconds:after {
+        font-size: 0.4em;
+    }
+
+    .minutes {
+
+        &:after {
+            content: 'm ';
+        }
+    }
+
+    .seconds {
+
+        &:after {
+            content: 's';
+        }
+    }
+}

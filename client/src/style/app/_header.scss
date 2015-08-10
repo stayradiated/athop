@@ -1,22 +1,13 @@
 .component--header {
-    background: #eee;
-    border-bottom: 10px;
+    $bg: $emerald;
+    color: #fff;
+
+    background: $bg;
+    border-bottom: 5px solid $nephritis;
     padding: 20px;
 
-    h1 {
-        float: left;
-        font-size: 20px;
+    h1, h3 {
         line-height: 1.5;
         margin: 0;
-    }
-
-    .component--transport-input {
-        float: right;
-    }
-
-    &:after {
-        content: '';
-        display: table;
-        clear: both;
     }
 }
