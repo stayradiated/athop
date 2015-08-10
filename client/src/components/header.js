@@ -21,7 +21,7 @@ const Header = React.createClass({
     render() {
         return (
             <header className='component--header'>
-                <h1><Icon id='bus' /> Ferry {this.state.stopID}</h1>
+                <h1><Icon id='bus' /> Bus Stop {this.state.stopID}</h1>
                 <h3>26 Albert Street</h3>
             </header>
         );
