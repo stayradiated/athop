@@ -10,7 +10,7 @@ import (
 )
 
 func requestStopInfo(stop string) ([]Movement, error) {
-	url := fmt.Sprintf("http://api.maxx.co.nz/RealTime/v2/Departures/Stop/%s?hours=1", stop)
+	url := fmt.Sprintf("http://api.maxx.co.nz/RealTime/v2/Departures/Stop/%s?hours=2", stop)
 
 	resp, err := http.Get(url)
 	if err != nil {
