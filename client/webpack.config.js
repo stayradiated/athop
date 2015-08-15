@@ -69,7 +69,7 @@ if (process.env.NODE_ENV === 'production') {
         },
 
         output: {
-            publicPath: 'http://localhost:8080/',
+            publicPath: 'http://localhost:9999/',
         },
 
         module: {

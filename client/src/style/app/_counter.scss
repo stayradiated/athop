@@ -1,7 +1,15 @@
 .component--counter {
+    .hours:after,
     .minutes:after,
     .seconds:after {
         font-size: 0.4em;
+    }
+
+    .hours {
+
+        &:after {
+            content: 'h ';
+        }
     }
 
     .minutes {

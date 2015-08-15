@@ -14,6 +14,12 @@ const Movement = React.createClass({
         movement: React.PropTypes.object.isRequired,
     },
 
+    getInitialState() {
+        return {
+            direction: 0,
+        };
+    },
+
     render() {
         var m = this.props.movement;
 
@@ -23,12 +29,24 @@ const Movement = React.createClass({
             'in-congestion': m.get('InCongestion'),
         });
 
+
         var aDT = moment(m.get('ActualDepartureTime'));
         var eAT = moment(m.get('ExpectedArrivalTime'));
         var eDT = moment(m.get('ExpectedDepartureTime'));
 
+        var icon, eTime, title;
+        if (this.state.direction  === 0) {
+            title = 'Expected Arrival';
+            icon = 'sign-in';
+            eTime = eAT;
+        } else {
+            title = 'Expected Departure';
+            icon = 'sign-out';
+            eTime = eDT;
+        }
+
         return (
-            <div className={classes}>
+            <div className={classes} onClick={this.handleClick}>
                 <header>
                     <h1 className='route'>{m.get('Route')}</h1>
                     <p className='departed'>
@@ -43,14 +61,14 @@ const Movement = React.createClass({
 
                 <div className='details'>
                     <div className='direction'>
-                        <Icon id='sign-in' />
+                        <Icon id={icon} />
                     </div>
 
                     <div className='expected-time'>
-                        <span className='title'>Expected Arrival</span>
+                        <span className='title'>{title}</span>
                         <span className='time'>
                             {eAT.format('hh:mm:ss')}
-                            <span className='ampm'>{eAT.format('a')}</span>
+                            <span className='ampm'>{eTime.format('a')}</span>
                         </span>
                     </div>
 
@@ -58,6 +76,12 @@ const Movement = React.createClass({
                 </div>
             </div>
         );
+    },
+
+    handleClick() {
+        this.setState({
+            direction: Math.abs(this.state.direction - 1),
+        });
     },
 
 });

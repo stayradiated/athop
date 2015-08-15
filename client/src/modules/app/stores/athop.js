@@ -8,7 +8,16 @@ function setStopID(state, stopID) {
 }
 
 function setMovements(state, movements) {
-    return state.set('movements', toImmutable(movements));
+    if (movements == null) {
+        return state;
+    }
+    return state.set('movements', toImmutable(movements.map(function (movement) {
+        if (movement.Monitored === false) {
+            movement.ExpectedArrivalTime = movement.ActualArrivalTime;
+            movement.ExpectedDepartureTime = movement.ActualDepartureTime;
+        }
+        return movement;
+    })));
 }
 
 const athop = new Store({

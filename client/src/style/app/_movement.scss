@@ -1,7 +1,6 @@
 .component--movement {
     display: flex;
     flex-direction: column;
-    text-align: center;
 
     $padding: 20px;
 
@@ -59,9 +58,11 @@
 
     .direction {
         .icon {
+            text-align: center;
             font-size: 2em;
             color: $emerald;
             margin-right: 10px;
+            width: 50px;
         }
     }
 

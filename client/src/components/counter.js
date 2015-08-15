@@ -29,14 +29,16 @@ const Counter = React.createClass({
     },
 
     render() {
-        var time = this.calculateTime();
+        var time = this.calculateTime() / 1000;
 
-        var minutes = Math.floor(time / 1000 / 60);
-        var seconds = Math.floor((time / 1000) % 60);
+        var hours   = this.format(time / 60 / 60);
+        var minutes = this.format((time / 60) % 60);
+        var seconds = this.format(time % 60);
 
         return (
             <div className='component--counter'>
                 <time>
+                    <span className='hours'>{hours}</span>
                     <span className='minutes'>{minutes}</span>
                     <span className='seconds'>{seconds}</span>
                 </time>
@@ -44,16 +46,18 @@ const Counter = React.createClass({
         );
     },
 
+    format(n) {
+        var s = Math.floor(n).toString();
+        if (s.length < 2) {
+            s = '0' + s;
+        }
+        return s;
+    },
+
     calculateTime() {
         var movement = this.props.movement;
         var timestamp = movement.get('TimeStamp');
-
-        var diff;
-        if (movement.get('Monitored')) {
-            diff = movement.get('ExpectedDepartureTime') - timestamp;
-        } else {
-            diff = movement.get('ActualDepartureTime') - timestamp;
-        }
+        var diff = movement.get('ExpectedDepartureTime') - timestamp;
 
         var now = Date.now();
         diff -= (now - movement.get('TimeStamp'));
