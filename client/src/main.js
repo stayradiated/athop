@@ -8,6 +8,7 @@ import flux from './flux';
 import App from './modules/app';
 
 import Container from './components/container';
+import Home from './components/Home';
 import MovementList from './components/movementList';
 
 import './style/index.scss';
@@ -15,10 +16,11 @@ import './style/index.scss';
 // export for http://fb.me/react-devtools
 window.React = React;
 
-var { Route } = Router;
+var { Route, DefaultRoute } = Router;
 
 var routes = (
     <Route path='/' handler={Container}>
+        <DefaultRoute path='/' handler={Home} />
         <Route name='stop' path='/stop/:stopID' handler={MovementList} />
     </Route>
 );
