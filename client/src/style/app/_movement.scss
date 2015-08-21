@@ -31,12 +31,8 @@
         }
 
         h1, .departed {
-            font-size: 1.5em;
+            font-size: 1.2em;
             color: $midnight-blue;
-        }
-
-        .departed {
-            font-size: 1.5em;
         }
 
         .destination {
@@ -44,6 +40,7 @@
             text-align: right;
             color: $peter-river;
             font-weight: bold;
+            font-size: 0.8em;
 
             .icon {
                 margin-right: 10px;
@@ -98,6 +95,6 @@
         flex: 1;
         text-align: right;
         color: $peter-river;
-        font-size: 2em;
+        font-size: 1.7em;
     }
 }
