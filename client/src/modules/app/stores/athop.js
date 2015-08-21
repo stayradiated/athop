@@ -3,11 +3,21 @@
 var { Store, toImmutable } = require('nuclear-js');
 var actionTypes = require('../action-types');
 
-function setStopID(state, stopID) {
-    return state.set('stopID', stopID);
+function changeStop(state, stopID) {
+    return state
+        .set('stopID', stopID)
+        .set('details', toImmutable({}))
+        .set('movements', toImmutable([]));
 }
 
-function setMovements(state, movements) {
+function getStop(state, stop) {
+    if (stop == null) {
+        return state;
+    }
+    return state.set('details', toImmutable(stop));
+}
+
+function getStopMovements(state, movements) {
     if (movements == null) {
         return state;
     }
@@ -25,13 +35,15 @@ const athop = new Store({
     getInitialState() {
         return toImmutable({
             stopID: '',
+            details: {},
             movements: [],
         });
     },
 
     initialize() {
-        this.on(actionTypes.setMovements, setMovements);
-        this.on(actionTypes.setStopID, setStopID);
+        this.on(actionTypes.changeStop, changeStop);
+        this.on(actionTypes.getStop, getStop);
+        this.on(actionTypes.getStopMovements, getStopMovements);
     },
 
 });

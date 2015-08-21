@@ -16,6 +16,7 @@ const Header = React.createClass({
     getDataBindings() {
         return {
             stopID: App.getters.stopID,
+            details: App.getters.details,
         };
     },
 
@@ -23,7 +24,7 @@ const Header = React.createClass({
         return (
             <header className='component--header'>
                 <h1 onClick={this.changeStop}><Icon id='bus' /> Bus Stop {this.state.stopID}</h1>
-                <h3>26 Albert Street</h3>
+                <h3>{this.state.details.get('Name')}</h3>
             </header>
         );
     },

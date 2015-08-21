@@ -1,8 +1,9 @@
 import keyMirror from 'keymirror';
 
 const actionTypes = keyMirror({
-    setStopID: null,
-    setMovements: null,
+    changeStop: null,
+    getStop: null,
+    getStopMovements: null,
 });
 
 export default actionTypes;

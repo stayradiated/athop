@@ -17,5 +17,9 @@ func GetRoutes(h *Handlers) Routes {
 			"ReadStop",
 			"GET", "/stop/{id:[0-9]+}", h.ReadStop,
 		},
+		Route{
+			"ReadStopMovements",
+			"GET", "/stop/{id:[0-9]+}/movements", h.ReadStopMovements,
+		},
 	}
 }

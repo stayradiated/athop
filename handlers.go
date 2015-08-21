@@ -14,6 +14,23 @@ type Handlers struct {
 func (h Handlers) ReadStop(w http.ResponseWriter, r *http.Request) {
 	id := mux.Vars(r)["id"]
 
+	movements, err := stopDetails(id)
+	if err != nil {
+		fmt.Fprintln(w, err)
+		return
+	}
+
+	w.Header().Set("content-type", "application/json")
+
+	// TODO: remove
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	json.NewEncoder(w).Encode(movements)
+}
+
+func (h Handlers) ReadStopMovements(w http.ResponseWriter, r *http.Request) {
+	id := mux.Vars(r)["id"]
+
 	movements, err := requestStopInfo(id)
 	if err != nil {
 		fmt.Fprintln(w, err)
